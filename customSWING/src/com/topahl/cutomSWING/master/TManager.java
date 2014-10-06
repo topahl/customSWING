@@ -19,7 +19,8 @@ public class TManager {
 	//Constants
 	public static final int SCALE_SCREEN = 0;
 	public static final int SCALE_FULLHD = 1;
-	private final int[][] references= {{getScreenSize().width, getScreenSize().height},{1920,1080}};
+	public static final int SCALE_SQUARE = 2;
+	private final int[][] references= {{getScreenSize().width, getScreenSize().height},{1920,1080},{1080,1080}};
 	//Constants end
 	
 	/**

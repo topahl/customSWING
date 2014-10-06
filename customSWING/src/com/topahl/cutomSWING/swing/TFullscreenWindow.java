@@ -1,6 +1,7 @@
 package com.topahl.cutomSWING.swing;
 
 import java.awt.Color;
+import java.awt.Component;
 
 import javax.swing.JFrame;
 
@@ -30,14 +31,21 @@ public class TFullscreenWindow extends JFrame{
 				TManager.getInstance().getGameSize().width, 
 				TManager.getInstance().getGameSize().height);
 		gameLayer.setBackground(Color.white);
-		this.add(gameLayer);
+		super.add(gameLayer);
 		
 		
-		TButton button = new TButton();
-		button.setBounds(0, 0, 100, 100);
-		gameLayer.add(button);
+//		TButton button = new TButton();
+//		button.setBounds(0, 0, 100, 100);
+//		gameLayer.add(button);
 		
 		
+		
+		
+		
+	}
+	@Override
+	public Component add(Component comp){
+		return gameLayer.add(comp);
 	}
 	
 	public void showWindow(){
