@@ -10,7 +10,7 @@ public class TManager {
 	
 	private static TManager instance;
 	
-	private boolean autoscale;
+	private boolean autoscale = true;
 	private double scaleFactor;
 	private HashMap<String, JComponent> objectStore;
 	private Dimension screenSize;
@@ -111,15 +111,16 @@ public class TManager {
 	 * @param ref Proportion model (Constants begin with SCALE_... )
 	 */
 	public void setScaleReference(int ref){
-		double x = (double)references[ref][0]/(double)getScreenSize().width;
-		double y = (double)references[ref][1]/(double)getScreenSize().height;
-		if(y < x){
+		double x = (double)getScreenSize().width/(double)references[ref][0];
+		double y = (double)getScreenSize().height/(double)references[ref][1];
+		if(y > x){
 			setAutoScaleFactor(x);
-			gameSize = new Dimension((int)(references[ref][0]/x),(int)(references[ref][1]/x));
+			gameSize = new Dimension((int)(references[ref][0]*x),(int)(references[ref][1]*x));
 		}else{
 			setAutoScaleFactor(y);
-			gameSize = new Dimension((int)(references[ref][0]/y),(int)(references[ref][1]/y));
+			gameSize = new Dimension((int)(references[ref][0]*y),(int)(references[ref][1]*y));
 		}
+		System.out.println("GameSize: "+gameSize.toString());
 	}
 	
 	/**
