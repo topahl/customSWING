@@ -17,7 +17,7 @@ public class TLabel extends JLabel{
 	/**
 	 * 
 	 */
-	private static final long serialVersionUID = 3270570305403830090L;
+	private static final long serialVersionUID = 2141785246267289701L;
 	private double autoscalefactor = 1;
 	private boolean autoscale = false;
 	
@@ -25,22 +25,6 @@ public class TLabel extends JLabel{
 		autoscalefactor = TManager.getInstance().getAutoScaleFactor();
 		autoscale = TManager.getInstance().isAutoscale();
 	}
-	
-	@Override
-	public void setSize(int width, int height) {
-		if(!autoscale)
-			super.setSize(width, height);
-		else{
-			super.setSize((int)(width*autoscalefactor), (int)(height*autoscalefactor));
-		}
-		
-	}
-	
-	@Override
-	public void setSize(Dimension d){
-		setSize(d.width, d.height);	
-	}
-
 	
 	@Override
 	public void setBounds(int x, int y, int width, int height){
@@ -55,10 +39,20 @@ public class TLabel extends JLabel{
 		setBounds(r.x, r.y, r.width, r.height);
 	}
 	
+	/**
+	 * After autoscaling the actual size on screen may vary. This method provides the actual size before it was autoscaled.
+	 * There might be a variance of 1 from trying to scale into a number that ca be represented in a fixed number of pixels.
+	 * @return The size that was set to the object 
+	 */
 	public Dimension getRealSize(){
-			return getSize(new Dimension());
+			return getRealSize(new Dimension());
 	}
 	
+	/**
+	 * After autoscaling the actual size on screen may vary. This method provides the actual size before it was autoscaled.
+	 * There might be a variance of 1 from trying to scale into a number that ca be represented in a fixed number of pixels.
+	 * @return The size that was set to the object 
+	 */
 	public Dimension getRealSize(Dimension rv){
 		if (!autoscale) {
 			return super.getSize(rv);
@@ -70,9 +64,8 @@ public class TLabel extends JLabel{
 		}
 	}
 
-	
  	public Rectangle getRealBounds(){
-		return getBounds(new Rectangle());
+		return getRealBounds(new Rectangle());
 	}
 
 	public Rectangle getRealBounds(Rectangle rv){
@@ -89,6 +82,8 @@ public class TLabel extends JLabel{
 	}
 
 	
+	
+	@Override
 	public void setIcon(Icon icon){
 		if(icon != null && autoscale){
 			BufferedImage image = new BufferedImage((int) (icon.getIconWidth()*autoscalefactor),(int)(icon.getIconHeight()*autoscalefactor),BufferedImage.TYPE_INT_ARGB);
