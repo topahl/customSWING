@@ -23,6 +23,8 @@ import com.topahl.cutomSWING.swing.TLabel;
 public class TestTLabel {
 	
 	private int x, y, height, width;
+	private final int TOLERANCE = 2;
+	
 	
 	@Parameters
 	public static Collection<Object[]> data() {
@@ -52,10 +54,10 @@ public class TestTLabel {
 		Rectangle r = new Rectangle(); 
 		label.getRealBounds(r);
 		
-		assertEquals("Rectangle Bounds X was set:"+x+"but was"+r.x ,r.x, x, 1);
-		assertEquals("Rectangle Bounds Y was set:"+y+"but was"+r.y ,r.y, y, 1);
-		assertEquals("Rectangle Bounds hight was set:"+height+"but was"+r.height ,r.height, height, 1);
-		assertEquals("Rectangle Bounds width was set:"+width+"but was"+r.width ,r.width, width, 1);
+		assertEquals("Rectangle Bounds X was set:"+x+"but was"+r.x ,r.x, x, TOLERANCE);
+		assertEquals("Rectangle Bounds Y was set:"+y+"but was"+r.y ,r.y, y, TOLERANCE);
+		assertEquals("Rectangle Bounds hight was set:"+height+"but was"+r.height ,r.height, height, TOLERANCE);
+		assertEquals("Rectangle Bounds width was set:"+width+"but was"+r.width ,r.width, width, TOLERANCE);
 	}
 	
 	@Test
@@ -63,10 +65,10 @@ public class TestTLabel {
 		label.setBounds(x, y, width, height);
 		Rectangle r = label.getRealBounds();
 		
-		assertEquals("Bounds X was set:"+x+"but was"+r.x ,r.x, x, 1);
-		assertEquals("Bounds Y was set:"+y+"but was"+r.y ,r.y, y, 1);
-		assertEquals("Bounds hight was set:"+height+"but was"+r.height ,r.height, height, 1);
-		assertEquals("Bounds width was set:"+width+"but was"+r.width ,r.width, width, 1);
+		assertEquals("Bounds X was set:"+x+"but was"+r.x ,r.x, x, TOLERANCE);
+		assertEquals("Bounds Y was set:"+y+"but was"+r.y ,r.y, y, TOLERANCE);
+		assertEquals("Bounds hight was set:"+height+"but was"+r.height ,r.height, height, TOLERANCE);
+		assertEquals("Bounds width was set:"+width+"but was"+r.width ,r.width, width, TOLERANCE);
 	}
 	@Test
 	public void testSetSizeDimension() {
@@ -74,8 +76,8 @@ public class TestTLabel {
 		Dimension r = new Dimension(); 
 		label.getRealSize(r);
 		
-		assertEquals("Dimension Size hight was set:"+height+"but was"+r.height ,r.height, height, 1);
-		assertEquals("Dimension Size width was set:"+width+"but was"+r.width ,r.width, width, 1);
+		assertEquals("Dimension Size hight was set:"+height+"but was"+r.height ,r.height, height, TOLERANCE);
+		assertEquals("Dimension Size width was set:"+width+"but was"+r.width ,r.width, width,TOLERANCE);
 	}
 	
 	@Test
@@ -83,8 +85,8 @@ public class TestTLabel {
 		label.setSize(width, height);
 		Dimension r = label.getRealSize();
 		
-		assertEquals("Size hight was set:"+height+"but was"+r.height ,r.height, height, 1);
-		assertEquals("Size width was set:"+width+"but was"+r.width ,r.width, width, 1);
+		assertEquals("Size hight was set:"+height+"but was"+r.height ,r.height, height, TOLERANCE);
+		assertEquals("Size width was set:"+width+"but was"+r.width ,r.width, width, TOLERANCE);
 	}
 	
 	@Test
