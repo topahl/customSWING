@@ -1,0 +1,33 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+
+  <groupId>com.topahl</groupId>
+  <artifactId>customSWING</artifactId>
+  <version>0.5</version>
+  <packaging>jar</packaging>
+
+  <name>customSWING from UI's</name>
+  <url>https://topahl.github.io/customSWING</url>
+
+  <properties>
+    <src.dir>src</src.dir>
+    <test.dir>junit</test.dir>
+  </properties>
+  <build>
+      <sourceDirectory>${src.dir}</sourceDirectory>
+      <testSourceDirectory>${test.dir}</testSourceDirectory>
+  </build>
+  <dependencies>
+    <dependency>
+      <groupId>junit</groupId>
+      <artifactId>junit</artifactId>
+      <version>4.8.2</version>
+      <scope>test</scope>
+    </dependency>
+  </dependencies>
+  <organization>
+  	<name>topahl</name>
+  	<url>https://topahl.github.io</url>
+  </organization>
+</project>
