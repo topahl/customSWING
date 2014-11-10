@@ -1,0 +1,11 @@
+language: java
+script: "mvn -f customSWING/pom.xml test"
+jdk:
+  - oraclejdk8
+  - oraclejdk7
+  - openjdk7
+  - openjdk6
+branches:
+  except:
+    - mvn-repo
+    - gh-pages
