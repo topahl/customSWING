@@ -1,6 +1,7 @@
 package com.topahl.cutomSWING.master;
 
 import java.awt.Dimension;
+import java.awt.HeadlessException;
 import java.awt.Toolkit;
 import java.util.HashMap;
 
@@ -129,7 +130,13 @@ public class TManager {
 	 */
 	public Dimension getScreenSize(){
 		if(screenSize == null)
-			screenSize=Toolkit.getDefaultToolkit().getScreenSize();
+			try{
+				screenSize=Toolkit.getDefaultToolkit().getScreenSize();
+			}
+			catch(HeadlessException e){
+				System.err.println("Running in Headless Mode");
+				screenSize= new Dimension(1080,1024);
+			}
 		return screenSize;	
 	}
 	
