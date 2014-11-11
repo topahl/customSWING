@@ -4,10 +4,10 @@
 
   <groupId>com.topahl</groupId>
   <artifactId>customSWING</artifactId>
-  <version>0.5</version>
+  <version>0.3a</version>
   <packaging>jar</packaging>
 
-  <name>customSWING from UI's</name>
+  <name>customSWING for better UI's</name>
   <url>https://topahl.github.io/customSWING</url>
 
   <properties>
