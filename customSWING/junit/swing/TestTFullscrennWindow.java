@@ -31,16 +31,19 @@ public class TestTFullscrennWindow {
 	
 	@Before
 	public void createTFullscreenWindow(){
+		org.junit.Assume.assumeTrue(TestHelper.notHeadless());
 		window = new TFullscreenWindow();
 	}
 	
 	@Test
-	public void TestShowWindow(){
+	public void testShowWindow(){
+		org.junit.Assume.assumeTrue(TestHelper.notHeadless());
 		window.showWindow();
 	}
 	
 	@Test
-	public void TestAddComponent(){
+	public void testAddComponent(){
+		org.junit.Assume.assumeTrue(TestHelper.notHeadless());
 		window.add(new TLabel());
 	}
 }
