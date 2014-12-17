@@ -48,8 +48,8 @@ public class TestHelper {
 		
 		for(int i = l; i<l+n ; i++){
 			for(int j = 0; j<types.length;j++){
-				switch (types[j][0]) {
-				case "Integer":
+				boolean error=true;
+				if (types[j][0]=="Integer") {
 					int min = 0;
 					int max = Integer.MAX_VALUE;
 					if(types[j][1]!=""){
@@ -59,21 +59,21 @@ public class TestHelper {
 						max=new Integer(types[j][2]);
 					}
 					result[i][j] =rand.nextInt(max)-min; 
-					break;
-				case "Boolean":
+					error=false;
+				}
+				if (types[j][0]=="Boolean") {
 					if(types[j].length>1 && types[j][1]!="")
 						result[i][j] =new Boolean(types[j][1]);
 					else
-						result[i][j] =rand.nextBoolean(); 
-					break;
-				default:
+						result[i][j] =rand.nextBoolean();
+					error=false;
+				}
+				if(error)
 					assert(false);
 				}
 			}
-		
-		}		
+				
 		return result;
-		
 	}
 	
 	public static Object[][] createRandomValues(Object[][] values, String[][] types){
