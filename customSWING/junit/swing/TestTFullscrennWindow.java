@@ -3,11 +3,14 @@ package swing;
 import java.util.Arrays;
 import java.util.Collection;
 
+import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
 import org.junit.runners.Parameterized.Parameters;
+
+import util.TestHelper;
 
 import com.topahl.cutomSWING.master.TManager;
 import com.topahl.cutomSWING.swing.TFullscreenWindow;
@@ -33,6 +36,11 @@ public class TestTFullscrennWindow {
 	public void createTFullscreenWindow(){
 		org.junit.Assume.assumeTrue(TestHelper.notHeadless());
 		window = new TFullscreenWindow();
+	}
+	
+	@After
+	public void destroyTFullscreenWindow(){
+		window.dispose();
 	}
 	
 	@Test

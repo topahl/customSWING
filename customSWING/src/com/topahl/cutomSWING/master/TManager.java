@@ -121,7 +121,7 @@ public class TManager {
 			setAutoScaleFactor(y);
 			gameSize = new Dimension((int)(references[ref][0]*y),(int)(references[ref][1]*y));
 		}
-		System.out.println("GameSize: "+gameSize.toString());
+
 	}
 	
 	/**

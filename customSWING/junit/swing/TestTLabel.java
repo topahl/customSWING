@@ -16,6 +16,8 @@ import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
 import org.junit.runners.Parameterized.Parameters;
 
+import util.TestHelper;
+
 import com.topahl.cutomSWING.master.TManager;
 import com.topahl.cutomSWING.swing.TLabel;
 
@@ -29,6 +31,8 @@ public class TestTLabel {
 	@Parameters
 	public static Collection<Object[]> data() {
 	  Object[][] data = new Object[][] { { true, 10 ,10 ,10 ,10 }, { false, 10, 10, 10, 10}, { true, 1000 ,2000,3000, 4000 } , { false, 1000 ,2000,3000, 4000 }};
+	  String[][]types = {{"Boolean"},{"Integer","0","100000"},{"Integer","0","100000"},{"Integer","1","10000"},{"Integer","1","10000"}};
+	  data = TestHelper.createRandomValues(data, types);
 	  return Arrays.asList(data);
 	}
 
