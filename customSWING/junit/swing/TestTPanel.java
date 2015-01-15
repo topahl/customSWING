@@ -15,7 +15,6 @@ import org.junit.runners.Parameterized.Parameters;
 import util.TestHelper;
 
 import com.topahl.cutomSWING.master.TManager;
-import com.topahl.cutomSWING.swing.TLabel;
 import com.topahl.cutomSWING.swing.TPanel;
 
 @RunWith(Parameterized.class)
@@ -23,7 +22,8 @@ public class TestTPanel {
 	
 	private int x,y,height,width;
 	private TPanel panel;
-	private final int TOLERANCE = 2;
+	private final int TOLERANCE = 2; //TODO: Test
+	private static int calls = 0;
 	
 	@Parameters
 	public static Collection<Object[]> data() {
@@ -33,6 +33,8 @@ public class TestTPanel {
 	  return Arrays.asList(data);
 	}
 	public TestTPanel(boolean autoscale ,int x, int y, int width, int height){
+		calls++;
+		TestHelper.progress(calls,1);
 		TManager.getInstance().setAutoscale(autoscale);
 		this.x = x;
 		this.y = y;

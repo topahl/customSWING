@@ -22,6 +22,7 @@ public class TestTButton {
 	TButton button;
 	int width, height;
 	private final int TOLERANCE = 2;
+	private static int calls = 0;
 	
 	@Parameters
 	public static Collection<Object[]> data() {
@@ -32,6 +33,8 @@ public class TestTButton {
 	}
 
 	public TestTButton(boolean autoscale, int height, int width) {
+		calls++;
+		TestHelper.progress(calls,1);
 		TManager.getInstance().setAutoscale(autoscale);
 		this.height=height;
 		this.width=width;

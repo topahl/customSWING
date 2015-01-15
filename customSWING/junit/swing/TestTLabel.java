@@ -26,7 +26,7 @@ public class TestTLabel {
 	
 	private int x, y, height, width;
 	private final int TOLERANCE = 2;
-	
+	private static int calls = 0;
 	
 	@Parameters
 	public static Collection<Object[]> data() {
@@ -37,6 +37,8 @@ public class TestTLabel {
 	}
 
 	public TestTLabel(boolean autoscale, int x, int y, int height, int width){
+		calls++;
+		TestHelper.progress(calls,5);
 		TManager.getInstance().setAutoscale(autoscale);
 		this.x=x;
 		this.y=y;

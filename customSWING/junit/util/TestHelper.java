@@ -14,7 +14,6 @@ public class TestHelper {
 		rand = new Random(seed);
 		String env = System.getenv("fewerTests");
 		if(env == null){
-			
 			RANDOMTESTCOUNT = 10000;
 		}
 		else{
@@ -22,6 +21,12 @@ public class TestHelper {
 		}
 	}
 	
+	public static void progress(int calls, int methods){
+		if(calls%((RANDOMTESTCOUNT*methods)/20)==0)
+			System.out.print('#');
+		if(RANDOMTESTCOUNT*methods==calls)
+			System.out.println("");
+	}
 	
 	public static boolean notHeadless(){
 		return !headless;
@@ -35,7 +40,7 @@ public class TestHelper {
 	 * @param n Number of pseudo random Tests to be created
 	 * @param values Test cases, that have to be covered
 	 * @param types Objects to be generated for each line in the array
-	 * @return
+	 * @return Object Array with random paramenters for testing
 	 */
 	public static Object[][] createRandomValues(int n, Object[][] values, String[][] types){
 		assert(n>0);
