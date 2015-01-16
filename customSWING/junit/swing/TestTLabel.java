@@ -52,9 +52,7 @@ public class TestTLabel {
 	@Before
 	public void createTLabel(){
 		label = new TLabel();
-		//Workaround bug #1
-		org.junit.Assume.assumeTrue(width > 0);
-		org.junit.Assume.assumeTrue(height > 0);
+		
 	}
 	
 	@Test
@@ -101,7 +99,7 @@ public class TestTLabel {
 	@Test
 	public void testSetIcon(){
 		label.setBounds(x, y, width, height);
-		BufferedImage icon = new BufferedImage(width, height, BufferedImage.TYPE_INT_ARGB);
+		BufferedImage icon = new BufferedImage(width+1, height+1, BufferedImage.TYPE_INT_ARGB);
 		label.setIcon(new ImageIcon(icon));
 	}
 }

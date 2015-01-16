@@ -51,6 +51,7 @@ public class TLabel extends JLabel{
 	/**
 	 * After autoscaling the actual size on screen may vary. This method provides the actual size before it was autoscaled.
 	 * There might be a variance of 1 from trying to scale into a number that ca be represented in a fixed number of pixels.
+	 * @param rv 
 	 * @return The size that was set to the object 
 	 */
 	public Dimension getRealSize(Dimension rv){
@@ -86,14 +87,19 @@ public class TLabel extends JLabel{
 	@Override
 	public void setIcon(Icon icon){
 		if(icon != null && autoscale){
-			BufferedImage image = new BufferedImage((int) (icon.getIconWidth()*autoscalefactor),(int)(icon.getIconHeight()*autoscalefactor),BufferedImage.TYPE_INT_ARGB);
-			Graphics2D g = (Graphics2D) image.getGraphics();
-			AffineTransform affine=new AffineTransform();
-			affine.scale(autoscalefactor,autoscalefactor);
-			g.setTransform(affine);
-			icon.paintIcon(this, g, 0, 0);
-			g.dispose();
-			super.setIcon(new ImageIcon(image));
+			int newwidth = (int) (icon.getIconWidth()*autoscalefactor);
+			int newheight = (int)(icon.getIconHeight()*autoscalefactor);
+			
+			if(newwidth != 0 && newheight != 0){
+				BufferedImage image = new BufferedImage(newwidth,newheight,BufferedImage.TYPE_INT_ARGB);
+				Graphics2D g = (Graphics2D) image.getGraphics();
+				AffineTransform affine=new AffineTransform();
+				affine.scale(autoscalefactor,autoscalefactor);
+				g.setTransform(affine);
+				icon.paintIcon(this, g, 0, 0);
+				g.dispose();
+				super.setIcon(new ImageIcon(image));
+			}
 		}else{
 			super.setIcon(icon);
 		}
