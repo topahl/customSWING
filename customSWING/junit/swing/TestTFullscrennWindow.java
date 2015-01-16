@@ -20,6 +20,7 @@ import com.topahl.cutomSWING.swing.TLabel;
 @RunWith(Parameterized.class)
 public class TestTFullscrennWindow {
 	TFullscreenWindow window;
+	public static boolean hasRun;
 	
 	@Parameters
 	public static Collection<Object[]> data() {
@@ -34,13 +35,16 @@ public class TestTFullscrennWindow {
 	
 	@Before
 	public void createTFullscreenWindow(){
+		hasRun = false;
 		org.junit.Assume.assumeTrue(TestHelper.notHeadless());
+		hasRun = true;
 		window = new TFullscreenWindow();
 	}
 	
 	@After
 	public void destroyTFullscreenWindow(){
-		window.dispose();
+		if(hasRun == true)
+			window.dispose();
 	}
 	
 	@Test
