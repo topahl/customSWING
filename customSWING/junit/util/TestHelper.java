@@ -63,7 +63,7 @@ public class TestHelper {
 					if(types[j][2]!=""){
 						max=new Integer(types[j][2]);
 					}
-					result[i][j] =rand.nextInt(max)-min; 
+					result[i][j] =rand.nextInt(max-min)+min; 
 					error=false;
 				}
 				if (types[j][0]=="Boolean") {
