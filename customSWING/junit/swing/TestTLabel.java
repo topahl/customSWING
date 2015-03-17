@@ -16,6 +16,8 @@ import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
 import org.junit.runners.Parameterized.Parameters;
 
+import util.TestHelper;
+
 import com.topahl.cutomSWING.master.TManager;
 import com.topahl.cutomSWING.swing.TLabel;
 
@@ -24,15 +26,19 @@ public class TestTLabel {
 	
 	private int x, y, height, width;
 	private final int TOLERANCE = 2;
-	
+	private static int calls = 0;
 	
 	@Parameters
 	public static Collection<Object[]> data() {
 	  Object[][] data = new Object[][] { { true, 10 ,10 ,10 ,10 }, { false, 10, 10, 10, 10}, { true, 1000 ,2000,3000, 4000 } , { false, 1000 ,2000,3000, 4000 }};
+	  String[][]types = {{"Boolean"},{"Integer","0","100000"},{"Integer","0","100000"},{"Integer","1","1000"},{"Integer","1","1000"}};
+	  data = TestHelper.createRandomValues(data, types);
 	  return Arrays.asList(data);
 	}
 
 	public TestTLabel(boolean autoscale, int x, int y, int height, int width){
+		calls++;
+		TestHelper.progress(calls,5);
 		TManager.getInstance().setAutoscale(autoscale);
 		this.x=x;
 		this.y=y;
@@ -46,6 +52,7 @@ public class TestTLabel {
 	@Before
 	public void createTLabel(){
 		label = new TLabel();
+		
 	}
 	
 	@Test
@@ -92,7 +99,7 @@ public class TestTLabel {
 	@Test
 	public void testSetIcon(){
 		label.setBounds(x, y, width, height);
-		BufferedImage icon = new BufferedImage(height, width, BufferedImage.TYPE_INT_ARGB);
+		BufferedImage icon = new BufferedImage(width+1, height+1, BufferedImage.TYPE_INT_ARGB);
 		label.setIcon(new ImageIcon(icon));
 	}
 }
