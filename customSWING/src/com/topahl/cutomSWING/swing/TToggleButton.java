@@ -1,43 +1,25 @@
 package com.topahl.cutomSWING.swing;
 
-import java.awt.Dimension;
 import java.awt.Graphics2D;
 import java.awt.geom.AffineTransform;
 import java.awt.image.BufferedImage;
 
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
-import javax.swing.JButton;
+import javax.swing.JToggleButton;
 
 import com.topahl.cutomSWING.master.TManager;
 
-
-
-
-public class TButton extends JButton{
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = 3471497407345816213L;
+public class TToggleButton extends JToggleButton {
+	private static final long serialVersionUID = 1L;
 	private double autoscalefactor = 1;
 	private boolean autoscale = false;
 	
-	public TButton(){
+	public TToggleButton(){
 		autoscalefactor = TManager.getInstance().getAutoScaleFactor();
 		autoscale = TManager.getInstance().isAutoscale();
 	}
 	
-	@Override
-	public void setSize(Dimension d) {
-		if(!autoscale)
-			super.setSize(d);
-		else{
-			d.setSize(d.getWidth()*autoscalefactor, d.getHeight()*autoscalefactor);
-			super.setSize(d);
-		}
-	}
-	
-	@Override
 	public void setBounds(int x, int y, int width, int height){
 		if(!autoscale)
 			super.setBounds(x, y, width, height);
