@@ -11,6 +11,8 @@ import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 
 import com.topahl.cutomSWING.master.TManager;
+import com.topahl.cutomSWING.master.TRectangle;
+import com.topahl.cutomSWING.master.TScalingEngine;
 
 public class TLabel extends JLabel{
 	
@@ -28,17 +30,16 @@ public class TLabel extends JLabel{
 	
 	@Override
 	public void setBounds(int x, int y, int width, int height){
-		if(!autoscale)
-			super.setBounds(x, y, width, height);
-		else{
-			super.setBounds((int)(x*autoscalefactor), (int)(y*autoscalefactor), (int)(width*autoscalefactor), (int)(height*autoscalefactor));
-		}
-	}
-
-	public void setBounds(Rectangle r){
-		setBounds(r.x, r.y, r.width, r.height);
+		TRectangle a = TScalingEngine.scaleRectangle(new TRectangle(x, y, width, height), autoscale, autoscalefactor);
+		super.setBounds(a.getX(),a.getY(),a.getWidth(),a.getHeight());
 	}
 	
+	@Override
+	public void setBounds(Rectangle r){
+		TRectangle a = TScalingEngine.scaleRectangle(new TRectangle(r), autoscale, autoscalefactor);
+		super.setBounds(a.getX(),a.getY(),a.getWidth(),a.getHeight());
+	}
+		
 	/**
 	 * After autoscaling the actual size on screen may vary. This method provides the actual size before it was autoscaled.
 	 * There might be a variance of 1 from trying to scale into a number that ca be represented in a fixed number of pixels.
@@ -86,23 +87,7 @@ public class TLabel extends JLabel{
 	
 	@Override
 	public void setIcon(Icon icon){
-		if(icon != null && autoscale){
-			int newwidth = (int) (icon.getIconWidth()*autoscalefactor);
-			int newheight = (int)(icon.getIconHeight()*autoscalefactor);
-			
-			if(newwidth != 0 && newheight != 0){
-				BufferedImage image = new BufferedImage(newwidth,newheight,BufferedImage.TYPE_INT_ARGB);
-				Graphics2D g = (Graphics2D) image.getGraphics();
-				AffineTransform affine=new AffineTransform();
-				affine.scale(autoscalefactor,autoscalefactor);
-				g.setTransform(affine);
-				icon.paintIcon(this, g, 0, 0);
-				g.dispose();
-				super.setIcon(new ImageIcon(image));
-			}
-		}else{
-			super.setIcon(icon);
-		}
+		super.setIcon(TScalingEngine.scaleImage(icon, autoscale, autoscalefactor, this));
 	}
 	
 
