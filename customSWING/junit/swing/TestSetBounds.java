@@ -44,7 +44,7 @@ public class TestSetBounds {
 
 	public TestSetBounds(boolean autoscale, int x, int y, int height, int width){
 		calls++;
-		TestHelper.progress(calls,5);
+		TestHelper.progress(calls,6);
 		TManager.getInstance().setAutoscale(autoscale);
 		this.x=x;
 		this.y=y;

@@ -20,6 +20,10 @@
  	<properties>
     	<src.dir>src</src.dir>
     	<test.dir>junit</test.dir>
+        <!-- maven-compiler-plugin config -->
+        <maven.compiler.source>7</maven.compiler.source>
+        <maven.compiler.target>7</maven.compiler.target>
+
 	</properties>
 	
   	<build>
