@@ -1,5 +1,6 @@
 package com.topahl.cutomSWING.master;
 
+import java.awt.Dimension;
 import java.awt.Rectangle;
 
 public class TRectangle {
@@ -84,7 +85,20 @@ public class TRectangle {
 	
 	public Rectangle getRectangle(){
 		return new Rectangle(x, y, width, height);
-		
+	}
+	
+	public Dimension getDimension(){
+		return new Dimension(width,height);
+	}
+	
+	public Dimension getDimension(Dimension rv){
+		rv.setSize(width, height);
+		return rv;
+	}
+	
+	
+	public TRectangle clone(){
+		return new TRectangle(x, y, width, height);
 	}
 }
 

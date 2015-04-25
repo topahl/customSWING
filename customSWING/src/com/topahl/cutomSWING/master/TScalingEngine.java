@@ -1,6 +1,7 @@
 package com.topahl.cutomSWING.master;
 
 import java.awt.Component;
+import java.awt.Dimension;
 import java.awt.Graphics2D;
 import java.awt.Rectangle;
 import java.awt.geom.AffineTransform;
@@ -35,4 +36,35 @@ public class TScalingEngine {
 		}
 	}
 	
+	public static Rectangle unscaleRectangle(Rectangle r,boolean autoscale, double autoscalefactor){
+		if (!autoscale) {
+			return r;
+		} else {
+			r.height /= autoscalefactor;
+			r.width /= autoscalefactor;
+			r.x /= autoscalefactor;
+			r.y /= autoscalefactor;
+			return r;
+		}
+	}
+	
+	public static TDimension scaleDimension(TDimension d, boolean autoscale, double autoscalefactor){
+		if(!autoscale)
+			return d;
+		else{
+			d.scale(autoscalefactor);
+			return d;
+		}
+		
+	}
+	
+	public static Dimension unscaleDimension(Dimension d, boolean autoscale, double autoscalefactor){
+		if (!autoscale) {
+			return d;
+		} else {
+			d.height /= autoscalefactor;
+			d.width /= autoscalefactor;
+			return d;
+		}
+	}
 }

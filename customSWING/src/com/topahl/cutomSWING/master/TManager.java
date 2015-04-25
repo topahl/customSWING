@@ -86,7 +86,7 @@ public class TManager {
 	
 	/**
 	 * Gives you the current scaling factor for new created components
-	 * @return
+	 * @return current scaling Factor
 	 */
 	public double getAutoScaleFactor(){
 		return scaleFactor;
