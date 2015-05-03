@@ -54,4 +54,8 @@ public class TToggleButton extends JToggleButton {
 		super.setDisabledIcon(TScalingEngine.scaleImage(icon, autoscale, autoscalefactor, this));
 	}
 	
+	public void setRolloverSelectedIcon(Icon icon){
+		super.setRolloverSelectedIcon(TScalingEngine.scaleImage(icon, autoscale, autoscalefactor, this));
+	}
+	
 }
