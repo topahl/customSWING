@@ -10,6 +10,7 @@ import javax.swing.ImageIcon;
 import javax.swing.JButton;
 
 import com.topahl.cutomSWING.master.TManager;
+import com.topahl.cutomSWING.master.TScalingEngine;
 
 
 
@@ -48,18 +49,27 @@ public class TButton extends JButton{
 	
 	@Override
 	public void setIcon(Icon icon){
-		if(icon != null && autoscale){
-			BufferedImage image = new BufferedImage((int) (icon.getIconWidth()*autoscalefactor),(int)(icon.getIconHeight()*autoscalefactor),BufferedImage.TYPE_INT_ARGB);
-			Graphics2D g = (Graphics2D) image.getGraphics();
-			AffineTransform affine=new AffineTransform();
-			affine.scale(autoscalefactor,autoscalefactor);
-			g.setTransform(affine);
-			icon.paintIcon(this, g, 0, 0);
-			g.dispose();
-			super.setIcon(new ImageIcon(image));
-		}else{
-			super.setIcon(icon);
-		}
+		super.setIcon(TScalingEngine.scaleImage(icon, autoscale, autoscalefactor, this));
+	}
+	
+	@Override
+	public void setRolloverIcon(Icon icon){
+		super.setRolloverIcon(TScalingEngine.scaleImage(icon, autoscale, autoscalefactor, this));
+	}
+	
+	@Override
+	public void setSelectedIcon(Icon icon){
+		super.setSelectedIcon(TScalingEngine.scaleImage(icon, autoscale, autoscalefactor, this));
+	}
+	
+	@Override
+	public void setPressedIcon(Icon icon){
+		super.setPressedIcon(TScalingEngine.scaleImage(icon, autoscale, autoscalefactor, this));
+	}
+	
+	@Override
+	public void setDisabledIcon(Icon icon){
+		super.setDisabledIcon(TScalingEngine.scaleImage(icon, autoscale, autoscalefactor, this));
 	}
 	
 }
