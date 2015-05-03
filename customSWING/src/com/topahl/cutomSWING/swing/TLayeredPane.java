@@ -23,6 +23,13 @@ public class TLayeredPane extends JLayeredPane implements TSetBounds{
 		autoscale = TManager.getInstance().isAutoscale();
 	}
 	
+	/**
+	 * @param autoscale the autoscale to set
+	 */
+	public void setAutoscale(boolean autoscale) {
+		this.autoscale = autoscale;
+	}
+
 	@Override
 	public Dimension getSize(){
 		return bounds.getDimension();

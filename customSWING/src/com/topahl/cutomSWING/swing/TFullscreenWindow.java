@@ -4,6 +4,7 @@ import java.awt.Color;
 import java.awt.Component;
 
 import javax.swing.JFrame;
+import javax.swing.JLayeredPane;
 
 import com.topahl.cutomSWING.master.TManager;
 
@@ -25,6 +26,7 @@ public class TFullscreenWindow extends JFrame{
 		setSize(TManager.getInstance().getScreenSize());
 		
 		//initialize game Layer
+		gameLayer.setAutoscale(false);
 		gameLayer.setBounds(
 				(TManager.getInstance().getScreenSize().width-TManager.getInstance().getGameSize().width)/2, 
 				(TManager.getInstance().getScreenSize().height-TManager.getInstance().getGameSize().height)/2, 
