@@ -71,9 +71,9 @@ public class TestSetBounds {
 		for (TSetBounds object : objects) {
 			object.setBounds(new Rectangle(x, y, width, height));
 			Rectangle r = new Rectangle(); 
-			object.getBounds(r);
+			object.getRealBounds(r);
 			Dimension d = new Dimension();
-			object.getSize(d);
+			object.getRealSize(d);
 			
 			assertEquals("Class: "+object.getClass().getName()+" Rectangle Bounds X",x, r.x, TOLERANCE);
 			assertEquals("Class: "+object.getClass().getName()+" Rectangle Bounds Y",y, r.y, TOLERANCE);
@@ -89,8 +89,8 @@ public class TestSetBounds {
 	public void testSetBounds() {
 		for (TSetBounds object : objects) {
 			object.setBounds(x, y, width, height);
-			Rectangle r = object.getBounds();
-			Dimension d = object.getSize();
+			Rectangle r = object.getRealBounds();
+			Dimension d = object.getRealSize();
 			
 			
 			assertEquals("Class: "+object.getClass().getName()+" Bounds X", x, r.x, TOLERANCE);
@@ -111,9 +111,9 @@ public class TestSetBounds {
 			
 			object.setSize(new Dimension(width, height));
 			Dimension d = new Dimension();
-			object.getSize(d);
+			object.getRealSize(d);
 			Rectangle r = new Rectangle();
-			object.getBounds(r);
+			object.getRealBounds(r);
 			
 			
 			assertEquals("Class: "+object.getClass().getName()+" Size",width,d.width,TOLERANCE);
@@ -133,7 +133,7 @@ public class TestSetBounds {
 			
 			object.setSize(new Dimension(width, height));
 			Dimension d = new Dimension();
-			object.getSize(d);
+			object.getRealSize(d);
 			
 			
 			assertEquals("Class: "+object.getClass().getName()+" Size",width,d.width,TOLERANCE);
@@ -146,7 +146,7 @@ public class TestSetBounds {
 	public void testSetSizeNoBounds(){
 		for (TSetBounds object : objects) {
 			object.setSize(width, height);
-			Dimension d = object.getSize();
+			Dimension d = object.getRealSize();
 			
 			assertEquals("Class: "+object.getClass().getName()+" Size",width,d.width,TOLERANCE);
 			assertEquals("Class: "+object.getClass().getName()+" Size",height,d.height,TOLERANCE);
@@ -160,8 +160,8 @@ public class TestSetBounds {
 			object.setBounds(x,y,width,height);
 			
 			object.setSize(width, height);
-			Dimension d = object.getSize();
-			Rectangle r = object.getBounds();
+			Dimension d = object.getRealSize();
+			Rectangle r = object.getRealBounds();
 			
 			assertEquals("Class: "+object.getClass().getName()+" Size",width,d.width,TOLERANCE);
 			assertEquals("Class: "+object.getClass().getName()+" Size",height,d.height,TOLERANCE);

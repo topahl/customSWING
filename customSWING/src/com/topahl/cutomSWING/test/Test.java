@@ -11,7 +11,7 @@ public class Test {
 		TManager.getInstance().setScaleReference(TManager.SCALE_SQUARE);
 		TFullscreenWindow window = new TFullscreenWindow();
 		TButton label = new TButton();
-		label.setBounds(0, 0, 1080, 1080);
+		label.setBounds(500, 500, 100, 100);
 		window.add(label);
 		window.showWindow();
 	}

@@ -31,12 +31,12 @@ public class TLayeredPane extends JLayeredPane implements TSetBounds{
 	}
 
 	@Override
-	public Dimension getSize(){
+	public Dimension getRealSize(){
 		return bounds.getDimension();
 	}
 	
 	@Override
-	public Dimension getSize(Dimension rv){
+	public Dimension getRealSize(Dimension rv){
 		return bounds.getDimension(rv);
 	}
 	
@@ -82,12 +82,12 @@ public class TLayeredPane extends JLayeredPane implements TSetBounds{
 	}
 	
 	@Override
- 	public Rectangle getBounds(){
+ 	public Rectangle getRealBounds(){
 		return bounds.getRectangle();
 	}
 	
 	@Override
-	public Rectangle getBounds(Rectangle rv){
+	public Rectangle getRealBounds(Rectangle rv){
 		rv.height=bounds.getHeight();
 		rv.width=bounds.getWidth();
 		rv.x=bounds.getX();

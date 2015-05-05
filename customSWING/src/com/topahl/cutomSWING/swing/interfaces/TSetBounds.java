@@ -9,15 +9,16 @@ public interface TSetBounds {
 	
 	public void setBounds(Rectangle r);
 	
-	public Rectangle getBounds();
+	public Rectangle getRealBounds();
 	
-	public Rectangle getBounds(Rectangle rv);
+	public Rectangle getRealBounds(Rectangle rv);
 	
 	public void setSize(int width, int height);
 	
 	public void setSize(Dimension d);
 	
-	public Dimension getSize();
+	public Dimension getRealSize();
 	
-	public Dimension getSize(Dimension d);
+	public Dimension getRealSize(Dimension d);
+
 }
