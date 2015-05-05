@@ -36,6 +36,14 @@ public class TScalingEngine {
 		}
 	}
 	
+	public static double scale(double value, boolean autoscale,double autoscalefactor){
+		if (!autoscale) {
+			return value;
+		} else {
+			return value*autoscalefactor;
+		}
+	}
+	
 	public static Rectangle unscaleRectangle(Rectangle r,boolean autoscale, double autoscalefactor){
 		if (!autoscale) {
 			return r;
