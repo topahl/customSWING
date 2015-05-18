@@ -4,7 +4,7 @@
 	
 	<groupId>com.topahl</groupId>
 	<artifactId>customSWING</artifactId>
-	<version>0.32a</version>
+	<version>0.33a</version>
 	<packaging>jar</packaging>
 	
 	<name>customSWING for better UI's</name>
