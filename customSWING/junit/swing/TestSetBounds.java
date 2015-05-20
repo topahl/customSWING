@@ -20,6 +20,7 @@ import com.topahl.cutomSWING.swing.TButton;
 import com.topahl.cutomSWING.swing.TLabel;
 import com.topahl.cutomSWING.swing.TLayeredPane;
 import com.topahl.cutomSWING.swing.TPanel;
+import com.topahl.cutomSWING.swing.TProgressBar;
 import com.topahl.cutomSWING.swing.TTextField;
 import com.topahl.cutomSWING.swing.TToggleButton;
 import com.topahl.cutomSWING.swing.interfaces.TSetBounds;
@@ -30,7 +31,7 @@ public class TestSetBounds {
 	private int x, y, height, width;
 	private final int TOLERANCE = 2;
 	private static int calls = 0;
-	private static Class classes[] = {TButton.class, TToggleButton.class, TLabel.class, TTextField.class, TPanel.class, TLayeredPane.class};
+	private static Class classes[] = {TButton.class, TToggleButton.class, TLabel.class, TTextField.class, TPanel.class, TLayeredPane.class, TProgressBar.class};
 	
 	
 	
