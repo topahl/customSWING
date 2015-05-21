@@ -13,11 +13,32 @@ import com.topahl.cutomSWING.swing.interfaces.TSetBounds;
 public class TProgressBar extends JProgressBar implements TSetBounds{
 	private double autoscalefactor = 1;
 	private boolean autoscale = false;
+	private boolean smooth = true;
 	private TRectangle bounds;
+	Animator updater;
+	
 	
 	public TProgressBar(){
 		autoscalefactor = TManager.getInstance().getAutoScaleFactor();
 		autoscale = TManager.getInstance().isAutoscale();
+		updater = new Animator(this);
+	}
+	
+	public void setSmooth(boolean value){
+		smooth=value;
+	}
+	
+	@Override
+	public void setValue(int n){
+		if(smooth){
+			updater.setValue(n);
+		}
+		else{
+			setValueDirect(n);
+		}
+	}
+	public void setValueDirect(int n){
+		super.setValue(n);
 	}
 	
 	@Override
@@ -85,6 +106,41 @@ public class TProgressBar extends JProgressBar implements TSetBounds{
 		rv.x=bounds.getX();
 		rv.y=bounds.getY();
 		return rv;
+	}
+	
+	private class Animator extends Thread{
+		private int current = 0; 
+		private int goal = 0;
+		public int sleep = 20;
+		private TProgressBar bar;
+	
+		public Animator(TProgressBar bar){
+			this.bar = bar;
+			this.start();
+		}
+		
+		public void run(){
+			try {
+				while(true){
+					if(current>goal)
+						current--;
+					if(current<goal)
+						current++;
+					bar.setValueDirect(current);
+						sleep(sleep);
+				}
+			} catch (InterruptedException e) {
+				e.printStackTrace();
+			}
+		}
+		
+		public void setValue(int n){
+			if(this.isAlive())
+				goal = n;
+			else
+				bar.setValueDirect(n);
+		}
+		
 	}
 	
 }
